@@ -1,8 +1,8 @@
 class Solution {
 public:
     int minOperations(string s) {
-        int c1=0;//string starting with 0
-        int c2=0;// string staring with 1
+        int c1=0; //count for string starting with 0
+        int c2=0; // string for staring with 1
         for(int i=0;i<s.length();i++)
         {
             if(i%2==0){
