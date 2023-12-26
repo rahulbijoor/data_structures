@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int numDecodings(int index,string s,vector<int> &memo){
+   int numDecodings(int index,string s,vector<int> &memo){
         if(index==s.length()){
             return 1;
         }
