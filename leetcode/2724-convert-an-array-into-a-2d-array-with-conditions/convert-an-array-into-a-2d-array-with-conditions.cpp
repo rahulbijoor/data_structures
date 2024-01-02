@@ -15,13 +15,16 @@ public:
         vector<vector<int>> result;
         for(int i=0;i<num;i++){
             vector<int> row;
-            for(auto& item : umap){
-                if(item.second!=0){
-                    cout<<item.first<<" : "<<item.second<<endl;
-                    row.push_back(item.first);
-                    item.second--;
+            for(auto item = umap.begin(); item != umap.end();){
+                if(item->second!=0){
+                    cout<<item->first<<" : "<<item->second<<endl;
+                    row.push_back(item->first);
+                    item->second--;
+                    item++;
                 }
-                
+                else{
+                    item=umap.erase(item);
+                }
                
 
             }
