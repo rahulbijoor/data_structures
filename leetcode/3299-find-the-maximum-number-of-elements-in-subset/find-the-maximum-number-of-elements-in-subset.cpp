@@ -1,11 +1,12 @@
 class Solution {
 public:
+   
     int maximumLength(vector<int>& nums) {
-        long long ans=0;
+        long ans=0;
         map<int,int> freq;
         for(int n: nums) freq[n]++;
         for(auto [k,f] : freq){
-            long long t=k,count=0;
+            long t=k,count=0;
             if( t == 1)
             {
                 count+=freq[t];
