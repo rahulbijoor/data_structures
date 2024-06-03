@@ -6,5 +6,8 @@ class Solution(object):
         """
         words=s.split()
         reverse=words[::-1]
-        result=' '.join(reverse)
+        result=''
+        for w in reverse:
+            result+=(w+' ')
+        result=result.strip()
         return result
