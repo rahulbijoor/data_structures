@@ -1,17 +1,18 @@
 class RecentCounter(object):
 
     def __init__(self):
-        self.queue=[]
+        self.heap=[]
+        heapq.heapify(self.heap)
 
     def ping(self, t):
         """
         :type t: int
         :rtype: int
         """
-        self.queue.append(t)
-        while self.queue[0] < t- 3000:
-            self.queue.pop(0)
-        return len(self.queue)
+        heapq.heappush(self.heap,t)
+        while self.heap[0] < t- 3000:
+            heapq.heappop(self.heap)
+        return len(self.heap)
 
         
 
