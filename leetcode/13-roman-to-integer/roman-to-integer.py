@@ -52,6 +52,6 @@ class Solution(object):
                 else:
                     sum += 1
             i+=1
-            print(sum)
+            
         return sum
             
