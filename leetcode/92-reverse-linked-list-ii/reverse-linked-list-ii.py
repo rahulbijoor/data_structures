@@ -14,35 +14,30 @@ class Solution(object):
         if not head or left == right:
             return head
         
-        # Step 1: Initialize a dummy node to simplify edge cases
-        dummy = ListNode(0)
-        dummy.next = head
-        prev = dummy
+        # Step 1: Initialize a temp node to simplify edge cases
+        temp = ListNode(0)
+        temp.next = head
+        curr = temp
         
         # Step 2: Reach the node just before position `left`
         position = 1
         while position < left:
-            prev = prev.next
+            curr = curr.next
             position += 1
         
         # Step 3: Reverse the sublist from `left` to `right`
-        current = prev.next
-        next_node = None
-        sublist_head = current
-        
+        sublist_head = curr.next
+        prev = None
         position = left
         while position <= right:
-            next_node = current.next
-            current.next = prev
-            prev = current
-            current = next_node
+            next_node = sublist_head.next
+            sublist_head.next = prev
+            prev = sublist_head
+            sublist_head = next_node
             position += 1
         
         # Step 4: Connect the reversed sublist back to the main list
-        sublist_head.next = current
-        prev_before_sublist = dummy
-        while prev_before_sublist.next != sublist_head:
-            prev_before_sublist = prev_before_sublist.next
-        prev_before_sublist.next = prev
+        curr.next.next = sublist_head
+        curr.next = prev
         
-        return dummy.next
+        return temp.next
