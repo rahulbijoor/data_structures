@@ -4,13 +4,12 @@ class Solution(object):
         :type s: List[str]
         :rtype: None Do not return anything, modify s in-place instead.
         """
-        l=0
-        r=len(s)-1
-        while l < r :
-            temp = s[l]
-            s[l] = s[r]
-            s[r] = temp
-            l+=1
-            r-=1
+        low = 0
+        high = len(s)-1
+        while low < high:
+            temp=s[low]
+            s[low]=s[high]
+            s[high]=temp
+            low += 1
+            high -= 1
         
-        return s
