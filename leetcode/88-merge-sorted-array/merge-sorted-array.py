@@ -20,23 +20,15 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        ele1=0
-        ele2=0
-        while ele1 < m and ele2 < n :
-            print(ele1 , ele2)
-            if nums1[ele1] <= nums2[ele2]:
-                ele1 += 1
-                continue
+        index1 = m - 1
+        index2 = n-1
+        insertIndex = m + n - 1
+        while index2 >= 0:
+            if index1 >= 0 and nums1[index1] > nums2[index2]:
+                nums1[insertIndex] = nums1[index1]
+                index1 -= 1
             else:
-                temp=nums1[ele1]
-                nums1[ele1]=nums2[ele2]
-                nums2[ele2]=temp
-                ele1 += 1
-        
-        while ele2 < n:
-            nums1[ele1]=nums2[ele2]
-            ele1 +=1
-            ele2 +=1
-        
-        nums1.sort()
+                nums1[insertIndex] = nums2[index2]
+                index2 -= 1
+            insertIndex -= 1
         return nums1
