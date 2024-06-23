@@ -20,12 +20,11 @@ class Solution:
     # if the sum is greater than max_sum then max_sum=sum
     def maximumWealth(self, accounts: List[List[int]]) -> int:
         max_sum=0
-        for i in range(0,len(accounts)):
+        for i in accounts:
             row_sum=0
-            for j in range(0,len(accounts[i])):
-                print(accounts[i][j],end =" ")
-                row_sum += accounts[i][j]
-            print()
+            for j in i:
+                row_sum += j
+
             if max_sum < row_sum:
                 max_sum=row_sum
             
