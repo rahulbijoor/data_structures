@@ -19,10 +19,4 @@ class Solution:
     # calculate sum of each row
     # if the sum is greater than max_sum then max_sum=sum
     def maximumWealth(self, accounts: List[List[int]]) -> int:
-        max_sum=0
-        for i in accounts:
-            row_sum=sum(i)
-            if max_sum < row_sum:
-                max_sum=row_sum
-            
-        return max_sum    
+        return max([sum(acc) for acc in accounts])
