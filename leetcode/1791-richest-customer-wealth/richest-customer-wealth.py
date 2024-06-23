@@ -21,10 +21,7 @@ class Solution:
     def maximumWealth(self, accounts: List[List[int]]) -> int:
         max_sum=0
         for i in accounts:
-            row_sum=0
-            for j in i:
-                row_sum += j
-
+            row_sum=sum(i)
             if max_sum < row_sum:
                 max_sum=row_sum
             
