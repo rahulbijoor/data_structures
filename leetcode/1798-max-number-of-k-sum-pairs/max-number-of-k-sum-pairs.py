@@ -1,18 +1,23 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        left = 0
-        right = len(nums) - 1
+        ht={}
+        minMax=0
         count = 0
-        while left < right:
-            Sum = nums[left] + nums[right]
-            if Sum < k:
-                left += 1
-            elif Sum > k:
-                right -= 1
+        for num in nums:
+            if num in ht.keys():
+                ht[num] += 1
             else:
-                left += 1
-                right -= 1
-                count += 1
+                ht[num] = 1
+        for num in nums:
+            if num in ht.keys() and k-num in ht.keys():
+                if num != k/2:
+                    count += min(ht[num],ht[k-num])
+                else:
+                    count += floor(ht[num]/2)
+                del ht[num]
+                if num != k-num:
+                    del ht[k-num]
+
+        
         return count
 
