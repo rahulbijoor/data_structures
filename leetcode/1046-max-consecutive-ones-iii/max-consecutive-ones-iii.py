@@ -10,12 +10,10 @@ class Solution(object):
         while right < len(nums):
             if nums[right] == 0:
                 count += 1
-            while count > k:
+            while count-k > 0:
                 if nums[left] == 0:
                     count -= 1
                 left += 1
-                
-
             if maxOnes < right-left+1:
                 maxOnes = right-left+1
             right += 1
