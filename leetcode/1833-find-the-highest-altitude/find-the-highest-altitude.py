@@ -8,6 +8,5 @@ class Solution(object):
         maxAlt=0
         for num in gain:
             Sum+=num
-            if maxAlt < Sum:
-                maxAlt= Sum
+            maxAlt=max(maxAlt,Sum)
         return maxAlt
