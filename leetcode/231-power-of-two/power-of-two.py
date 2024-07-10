@@ -5,4 +5,4 @@ class Solution(object):
         :rtype: bool
         """
         
-        return n>0 and str(bin(n)).count('1') == 1
+        return n>0 and not (n & n-1)
