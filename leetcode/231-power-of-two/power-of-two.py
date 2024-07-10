@@ -5,4 +5,4 @@ class Solution(object):
         :rtype: bool
         """
         
-        return n>0 and not (n & n-1)
+        return n>0 and (n & n-1) == 0
