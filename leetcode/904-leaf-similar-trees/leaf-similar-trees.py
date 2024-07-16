@@ -7,7 +7,7 @@
 class Solution:
     def leafSequence(self,node: Optional[TreeNode],leaf_Seq: List[int]):
         if not node:
-            return
+            return  
         if not node.left and not node.right:
             leaf_Seq.append(node.val)
             return
