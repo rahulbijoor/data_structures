@@ -3,19 +3,23 @@ class Solution:
         radiant=[]
         dire=[]
         for i in range(0,len(senate)):
+        
             if senate[i] == "R":
                 radiant.append(i)
             else:
                 dire.append(i)
-
+        
         while len(radiant) > 0 and len(dire) > 0:
             if radiant[0] < dire[0]:
-                radiant.append(radiant.pop(0)+len(senate))
-                dire.pop(0)
+                    dire.pop(0)
+                    l=radiant.pop(0)
+                    radiant.append(l+len(senate))
             else:
-                dire.append(dire.pop(0)+len(senate))
-                radiant.pop(0)
-
+                    radiant.pop(0)
+                    l=dire.pop(0)
+                    dire.append(l+len(senate))
+        
         if len(radiant) > 0:
-            return "Radiant" 
-        return "Dire"
+            return "Radiant"
+        else:
+            return "Dire"
