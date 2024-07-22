@@ -10,11 +10,9 @@ class Solution:
             
             return False
         sum+=node.val
-        if not node.left and not node.right:
-            if targetSum == sum:
-                return True
+        if targetSum == sum and not node.left and not node.right:
+            return True
                 
-         
         return self.dfs(node.left, targetSum, sum) or self.dfs(node.right, targetSum, sum)
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if not root:
