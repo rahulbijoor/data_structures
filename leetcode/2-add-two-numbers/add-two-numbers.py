@@ -1,33 +1,38 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-class Solution(object):
-    def addTwoNumbers(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
-        dummy = ListNode(0)  # Dummy node to simplify code
-        current = dummy
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        l3=ListNode(0)
+        dummy=l3
         carry = 0
+        while l1 and l2 :
+            addSum = l1.val + l2.val + carry
+            carry = addSum // 10
+            l3.next=ListNode(addSum % 10)
+            l3 = l3.next
+            l1 = l1.next
+            l2 = l2.next
         
-        while l1 is not None or l2 is not None:
-            sum = carry
-            if l1 is not None:
-                sum += l1.val
-                l1 = l1.next
-            if l2 is not None:
-                sum += l2.val
-                l2 = l2.next
-            
-            carry = sum // 10  # Integer division for carry
-            current.next = ListNode(sum % 10)  # Modulus for the current digit
-            current = current.next
+        while l1:
+            addSum = l1.val + carry 
+            carry = addSum // 10
+            l3.next=ListNode(addSum % 10)
+            l3 = l3.next
+            l1 = l1.next
+        while l2:
+            addSum = l2.val + carry
+            carry = addSum // 10
+            l3.next=ListNode(addSum % 10)
+            l3 = l3.next
+            l2 = l2.next
         
-        if carry > 0:
-            current.next = ListNode(carry)
+
+        
+        if carry == 1:
+            l3.next=ListNode(carry)
         
         return dummy.next
+
