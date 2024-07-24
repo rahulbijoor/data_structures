@@ -9,7 +9,7 @@ class Solution:
         if not root:
             return 0
 
-        queue = deque([root])
+        queue = [root]
         level = 1
         maxLevel = 1
         maxSum = root.val
@@ -19,7 +19,7 @@ class Solution:
             current_sum = 0
             
             for _ in range(level_length):
-                node = queue.popleft()
+                node = queue.pop(0)
                 current_sum += node.val
                 
                 if node.left:
