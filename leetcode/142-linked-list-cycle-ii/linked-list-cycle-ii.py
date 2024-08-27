@@ -10,19 +10,20 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        fast=head
-        slow=head
-        curr=None
-        while fast and fast.next:
-            fast=fast.next.next
-            curr=slow
-            slow=slow.next
-            
-            if slow == fast:
-                break
-        else:
-            return None
-        while head != slow:
-            head=head.next
-            slow=slow.next
-        return head
+        #fast = head
+        #slow = head
+        curr = head
+        nodes=dict()
+        count = 0
+        while curr:
+            if curr in nodes.values():
+                
+                return curr
+
+            nodes[count] = curr
+            count += 1
+            curr = curr.next
+            #fast = fast.next.next
+            #slow = slow.next
+        
+        return None
