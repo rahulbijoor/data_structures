@@ -5,34 +5,35 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        l3=ListNode(0)
-        dummy=l3
-        carry = 0
-        while l1 and l2 :
-            addSum = l1.val + l2.val + carry
-            carry = addSum // 10
-            l3.next=ListNode(addSum % 10)
-            l3 = l3.next
-            l1 = l1.next
-            l2 = l2.next
+        dummyNode = curr = ListNode()
         
-        while l1:
-            addSum = l1.val + carry 
-            carry = addSum // 10
-            l3.next=ListNode(addSum % 10)
-            l3 = l3.next
-            l1 = l1.next
-        while l2:
-            addSum = l2.val + carry
-            carry = addSum // 10
-            l3.next=ListNode(addSum % 10)
-            l3 = l3.next
-            l2 = l2.next
+        # Initialize a variable to store the remainder value, if any, as we compute the sum. 
+        remainder = 0
         
-
+        # Traverse the two lists while our two pointers is not null and remainder is not 0.
+        while l1 or l2 or remainder:
+            
+            # Find the values at each pointer
+            num1 = l1.val if l1 else 0
+            num2 = l2.val if l2 else 0
+            
+            # Find and store their sum
+            total = num1 + num2 + remainder
+            singleDigitTotal = total % 10
+            
+            # Calculate the carry over value, if any
+            remainder = total // 10 
+            
+            # Create and attach a new node with summed value to the return list
+            curr.next = ListNode(singleDigitTotal)
+            
+            # Repeat with next nodes
+            curr = curr.next
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
+                
+        # Return dummy.next
+        return dummyNode.next   
         
-        if carry == 1:
-            l3.next=ListNode(carry)
-        
-        return dummy.next
-
