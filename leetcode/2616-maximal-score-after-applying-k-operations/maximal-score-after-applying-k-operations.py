@@ -11,8 +11,7 @@ class Solution:
         while k > 0:
             maxEle = -1 * heapq.heappop(nums)
             score += maxEle
-            maxEle = ceil(maxEle/3)
-            print(maxEle)
+            maxEle = (maxEle+2)//3
             heapq.heappush(nums,-1*maxEle)
             k -= 1
 
