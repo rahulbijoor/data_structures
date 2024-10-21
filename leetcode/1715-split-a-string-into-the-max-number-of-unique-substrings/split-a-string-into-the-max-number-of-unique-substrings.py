@@ -2,7 +2,7 @@ class Solution:
     def maxUniqueSplit(self, s: str) -> int:
         sstr = set()
 
-        def dfs(i, cur_set):
+        def dfs(i):
             if i == len(s):
                 return 0
             
@@ -11,9 +11,9 @@ class Solution:
                 curr = s[i:j+1]
                 if curr not in sstr:
                     sstr.add(curr)
-                    res = max(res,1+dfs(j+1,cur_set))
+                    res = max(res,1+dfs(j+1))
                     sstr.remove(curr)
             return res
-        return dfs(0,sstr)
+        return dfs(0)
 
     
