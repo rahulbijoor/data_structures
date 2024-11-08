@@ -12,6 +12,6 @@ class Solution(object):
         mask = (1 << maximumBit) - 1
         ans=[]
         for i in range(len(nums)):
-            prod = prefix[-i-1]
+            prod = prefix[len(nums)-1-i]
             ans.append( prod ^ mask)
         return ans
