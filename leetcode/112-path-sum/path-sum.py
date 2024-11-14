@@ -5,16 +5,19 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def dfs(self, node: Optional[TreeNode], targetSum: int, sum: int) -> bool:
-        if not node:
-            
-            return False
-        sum+=node.val
-        if targetSum == sum and not node.left and not node.right:
-            return True
-                
-        return self.dfs(node.left, targetSum, sum) or self.dfs(node.right, targetSum, sum)
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        if not root:
+        if root is None:
             return False
-        return self.dfs(root, targetSum, 0)     
+        
+        def helper(node: Optional[TreeNode], targetSum: int) -> bool:
+            if not node:
+                return False
+            
+            targetSum-= node.val
+            if targetSum == 0 and not node.left and not node.right:
+                return True
+            
+            return helper(node.left, targetSum) or helper(node.right,targetSum)
+        
+
+        return helper(root, targetSum)
