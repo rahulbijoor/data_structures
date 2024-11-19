@@ -8,13 +8,11 @@ class Solution:
         
         res = [0] * n
         start, end = (1, k) if k > 0 else (k, -1)
-        
-        # Compute the initial window sum
         window_sum = sum(code[i % n] for i in range(start, end + 1))
         
         for i in range(n):
             res[i] = window_sum
-            # Update the sliding window sum
+
             window_sum -= code[(i + start) % n]
             window_sum += code[(i + end + 1) % n]
         
