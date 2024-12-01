@@ -1,0 +1,191 @@
+Bit Manipulation Tricks
+Check if a Number is a Power of Two
+
+python
+
+def is_power_of_two(n):
+    return n > 0 and (n & (n - 1)) == 0
+
+Count the Number of 1s in Binary Representation (Hamming Weight)
+
+python
+
+def count_ones(n):
+    return bin(n).count('1')
+
+Get the Lowest Set Bit
+
+python
+
+def lowest_set_bit(n):
+    return n & -n
+
+Set a Specific Bit
+
+python
+
+def set_bit(n, k):
+    return n | (1 << k)  # Set the k-th bit (0-indexed)
+
+Clear a Specific Bit
+
+python
+
+def clear_bit(n, k):
+    return n & ~(1 << k)  # Clear the k-th bit
+
+Toggle a Specific Bit
+
+python
+
+def toggle_bit(n, k):
+    return n ^ (1 << k)
+
+Check if k-th Bit is Set
+
+python
+
+def is_bit_set(n, k):
+    return (n & (1 << k)) != 0
+
+Swap Two Numbers Without a Temp Variable
+
+python
+
+a, b = a ^ b, a ^ b ^ a
+Reverse Bits of a Number
+
+python
+
+def reverse_bits(n, bit_size=32):
+    result = 0
+    for _ in range(bit_size):
+        result = (result << 1) | (n & 1)
+        n >>= 1
+    return result
+Find XOR of All Numbers from 1 to n
+Useful for problems like finding the missing number.
+
+python
+
+def xor_upto(n):
+    return [n, 1, n + 1, 0][n % 4]
+General Useful Functions
+Efficient Exponentiation
+
+python
+
+pow(base, exp, mod)  # Computes (base^exp) % mod efficiently
+Greatest Common Divisor (GCD)
+
+python
+
+from math import gcd
+result = gcd(a, b)
+Least Common Multiple (LCM)
+
+python
+
+from math import gcd
+def lcm(a, b):
+    return a * b // gcd(a, b)
+Heap Operations
+
+python
+
+import heapq
+heap = []
+heapq.heappush(heap, value)  # Add value to heap
+smallest = heapq.heappop(heap)  # Pop smallest value
+Find All Subsets (Power Set)
+
+python
+
+from itertools import combinations
+def power_set(nums):
+    subsets = []
+    for r in range(len(nums) + 1):
+        subsets.extend(combinations(nums, r))
+    return subsets
+Get All Permutations
+
+python
+
+from itertools import permutations
+perms = list(permutations(nums))
+Custom Sorting with Lambda
+
+python
+
+sorted_items = sorted(items, key=lambda x: (x[0], -x[1]))
+Array and String Tricks
+Flatten a Nested List
+
+python
+
+from itertools import chain
+flat_list = list(chain.from_iterable(nested_list))
+Find Most Frequent Element
+
+python
+
+from collections import Counter
+most_common = Counter(nums).most_common(1)[0][0]
+Sliding Window Sum
+
+python
+
+def sliding_window_sum(nums, k):
+    current_sum = sum(nums[:k])
+    max_sum = current_sum
+    for i in range(k, len(nums)):
+        current_sum += nums[i] - nums[i - k]
+        max_sum = max(max_sum, current_sum)
+    return max_sum
+Check Palindrome
+
+python
+
+def is_palindrome(s):
+    return s == s[::-1]
+Two-Pointer Technique
+For sorted arrays, find two numbers that add up to a target:
+
+python
+
+def two_sum_sorted(nums, target):
+    left, right = 0, len(nums) - 1
+    while left < right:
+        total = nums[left] + nums[right]
+        if total == target:
+            return left, right
+        elif total < target:
+            left += 1
+        else:
+            right -= 1
+    return -1, -1
+Other Interview-Specific Tricks
+Default Dictionary for Counting
+
+python
+
+from collections import defaultdict
+count = defaultdict(int)
+for num in nums:
+    count[num] += 1
+Matrix Transposition
+
+python
+
+transposed = list(zip(*matrix))
+Sort Dictionary by Value
+
+python
+
+sorted_dict = sorted(my_dict.items(), key=lambda item: item[1])
+Use zip() for Pairing Elements
+
+python
+
+pairs = zip(list1, list2)
+
