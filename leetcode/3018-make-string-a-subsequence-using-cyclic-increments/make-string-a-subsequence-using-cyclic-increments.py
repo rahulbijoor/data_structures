@@ -15,7 +15,7 @@ class Solution:
                 j += 1
             else:
                 i+=1
-            print(i, j)
+            
 
         if j == l2:
             return True
