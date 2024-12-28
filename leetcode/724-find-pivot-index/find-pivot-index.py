@@ -4,15 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        totalSum = 0
-        leftSum = 0
-        for num in nums:
-            totalSum += num
-        for i in range(0,len(nums)):
-            if leftSum == totalSum - ( leftSum + nums[i]):
-                return i
-            leftSum += nums[i]
-        return -1
-
-
+        l = len(nums)
+        leftSum =[0]*l
+        rightSum = [0]*l
+        for i in range(1,l):
+            leftSum[i] = leftSum[i-1] + nums[i-1]
         
+        for i in range(l-2,-1,-1):
+            rightSum[i] = rightSum[i+1] + nums[i+1]
+        
+        for i in range(l):
+            if leftSum[i] == rightSum[i]:
+                return i 
+        return -1
