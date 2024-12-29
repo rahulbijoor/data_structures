@@ -11,7 +11,7 @@ class Solution(object):
         :rtype: int
         """
 
-        if root is None:
+        if not root:
             return 0
         
         leftDepth = self.maxDepth(root.left)
