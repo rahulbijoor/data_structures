@@ -13,9 +13,10 @@ class Solution(object):
         maxLevel = 1
         
         while queue:
+            l = len(queue)
             level += 1
             levelSum = 0
-            for _ in range(len(queue)):
+            for _ in range(l):
                 node = queue.popleft()
                 levelSum += node.val
                 if node.left:
