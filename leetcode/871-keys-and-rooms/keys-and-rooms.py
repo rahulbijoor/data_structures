@@ -4,20 +4,14 @@ class Solution(object):
         :type rooms: List[List[int]]
         :rtype: bool
         """
-        n=len(rooms)
-        visited = [False]*n
-        visited[0] = True
-        stack=[0]
-
+        visited = set()
+        stack =[0]
         while stack:
-            ele = stack.pop()
-            for nei in rooms[ele]:
-                if not visited[nei]:
-                    visited[nei] = True
-                    stack.append(nei)
-        
-        return all(visited)
-
-            
+            room = stack.pop()
+            visited.add(room)
+            for key in rooms[room]:
+                if key not in visited:
+                    stack.append(key)
+        return len(visited) == len(rooms)
 
         
