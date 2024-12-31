@@ -16,7 +16,7 @@ class Solution(object):
             for j in range(1,n):
                 dp[i][j] =dp[i-1][j] + dp[i][j-1]
         return dp[m-1][n-1]
-        def helper(i,j,dp):
+        """def helper(i,j,dp):
             
             if i == m-1 and j == n-1:
                 return 1
@@ -28,4 +28,4 @@ class Solution(object):
 
             return dp[i][j]
         return helper(0, 0,dp)
-        
+        """
