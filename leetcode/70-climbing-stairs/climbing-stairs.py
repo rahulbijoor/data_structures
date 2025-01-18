@@ -1,16 +1,19 @@
-class Solution:
-    def climbStairs(self, n: int) -> int:
-        if n <= 2:
-            return n
-        mp=[-1]*(n+1)
-        mp[0] = 0
-        mp[1] = 1
-        mp[2] = 2
-        def helper(n,mp):
-            if mp[n] != -1:
-                return mp[n]
-            mp[n] = helper(n-1,mp) + helper(n-2,mp)
-            return mp[n]
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp =[-1]*(n+1)
+        dp[0] = 1
+        dp[1] = 1
+        def helper(i):
+            
+            if dp[i] != -1:
+                return dp[i]
+
+            dp[i]=helper(i-1)+helper(i-2)
+            return dp[i]
+        helper(n)
+        return dp[-1]
         
-        helper(n,mp)
-        return mp[n]
