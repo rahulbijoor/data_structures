@@ -7,13 +7,7 @@ class Solution(object):
         dp =[-1]*(n+1)
         dp[0] = 1
         dp[1] = 1
-        def helper(i):
-            
-            if dp[i] != -1:
-                return dp[i]
-
-            dp[i]=helper(i-1)+helper(i-2)
-            return dp[i]
-        helper(n)
+        for i in range(2,n+1):
+            dp[i] = dp[i-1] + dp[i-2]
         return dp[-1]
         
