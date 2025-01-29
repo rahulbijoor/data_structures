@@ -8,6 +8,6 @@ class Solution:
             else:
                 top = stack.pop()
                 max_end = max(top[-1],interval[-1])
-                new_interval = [top[0],max_end]
-                stack.append(new_interval)
+                
+                stack.append([top[0],max_end])
         return stack
