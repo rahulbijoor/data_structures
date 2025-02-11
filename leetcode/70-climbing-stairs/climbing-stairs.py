@@ -1,13 +1,12 @@
-class Solution(object):
-    def climbStairs(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        dp =[-1]*(n+1)
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        dp=[-1]*(n+1)
         dp[0] = 1
         dp[1] = 1
-        for i in range(2,n+1):
-            dp[i] = dp[i-1] + dp[i-2]
-        return dp[-1]
-        
+        def helper(n,dp):
+            if dp[n] != -1:
+                return dp[n]
+            dp[n] = helper(n-1,dp)+helper(n-2,dp)
+            return dp[n]
+        helper(n,dp)
+        return dp[n]
