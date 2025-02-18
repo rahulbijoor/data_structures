@@ -3,20 +3,19 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        rows = len(matrix)
-        cols = len(matrix[0])
-        row = set()
-        col = set()
-        for r in range(rows):
-            for c in range(cols):
-                if matrix[r][c] == 0:
-                    row.add(r)
-                    col.add(c)
-        print(row)
-        print(col)
-        for r in row:
-            matrix[r]=[0]*cols
-        for c in col:
-            for r in range(rows):
+        rows = set()
+        cols = set()
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j] == 0:
+                    rows.add(i)
+                    cols.add(j)
+        for r in rows:
+            for c in range(len(matrix[0])):
+                matrix[r][c] = 0
+        for c in cols:
+            for r in range(len(matrix)):
                 matrix[r][c] = 0
         return matrix
+        
+        
