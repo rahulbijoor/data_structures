@@ -1,12 +1,17 @@
-class Solution:
-    def findMin(self, nums: List[int]) -> int:
-        low = 0
-        high = len(nums)-1
-        while low < high:
-            mid = low +(high-low)//2
-            if nums[mid] > nums[high]:
-                low = mid+1
+class Solution(object):
+    def findMin(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        l = 0
+        h = len(nums)-1
+        mid =0
+        while l < h:
+            mid = l + (h-l)//2
+            if nums[mid] > nums[h]:
+                l = mid+1
             else:
-                high = mid
-
-        return nums[low]
+                h = mid
+        return nums[l]
+        
