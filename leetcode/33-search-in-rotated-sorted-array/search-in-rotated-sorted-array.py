@@ -1,26 +1,25 @@
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        l = 0
+        h = len(nums)-1
 
-class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        low = 0
-        high = len(nums) - 1
-
-        while low <= high:
-            mid = low + (high - low) // 2
-
-            # Check if mid is the target
-            if nums[mid] == target:
+        while l <= h:
+            mid  = l + (h-l)//2
+            if (target == nums[mid]):
                 return mid
-
-            # Determine which half is sorted
-            if nums[low] <= nums[mid]:  # Left half is sorted
-                if nums[low] <= target < nums[mid]:
-                    high = mid - 1  # Target is in the sorted left half
+            if nums[l] <= nums[mid]:
+                if nums[l]<=target<nums[mid]:
+                    h = mid - 1
                 else:
-                    low = mid + 1  # Target is in the right half
-            else:  # Right half is sorted
-                if nums[mid] < target <= nums[high]:
-                    low = mid + 1  # Target is in the sorted right half
+                    l = mid + 1
+            else:
+                if nums[mid] < target <= nums[h]:
+                    l = mid+1
                 else:
-                    high = mid - 1  # Target is in the left half
-
-        return -1  # Target not found
+                    h = mid-1
+        return -1
