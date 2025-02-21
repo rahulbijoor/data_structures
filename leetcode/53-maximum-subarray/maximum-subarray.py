@@ -1,9 +1,17 @@
-class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        maxSum = nums[0]
-        currentSum = 0
-        for i in range(len(nums)):
-            currentSum = max(currentSum+nums[i],nums[i])
-            maxSum = max(maxSum, currentSum)
-
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        maxSum = -sys.maxsize - 1
+        Sum = 0
+        for n in nums:
+            Sum += n
+            maxSum = max(maxSum,Sum)
+            if Sum  < 0:
+                Sum = 0
+            
         return maxSum
+
+
