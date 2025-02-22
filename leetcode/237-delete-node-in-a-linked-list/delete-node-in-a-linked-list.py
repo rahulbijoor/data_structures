@@ -11,10 +11,7 @@ class Solution(object):
         :rtype: void Do not return anything, modify node in-place instead.
         """
         while node.next.next:
-            temp=node.next.val
-            node.val = temp
+            node.val = node.next.val
             node = node.next
         node.val = node.next.val
-        print(node.val)
-        print(node.next.val)
         node.next=None
