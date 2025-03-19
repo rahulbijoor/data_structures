@@ -1,20 +1,25 @@
-class Solution:
-    def numIslands(self, grid: List[List[str]]) -> int:
-        rows,cols = len(grid), len(grid[0])
-        count = 0
-        def dfs(r,c):
-            if r < 0 or c < 0 or r == rows or c == cols or grid[r][c] == '0':
-                return False
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        def dfs(grid,row,col):
+            if row <0 or col< 0 or row>= len(grid) or col >= len(grid[0]) or grid[row][col] =='0':
+                return
+            grid[row][col] ='0'
+            dfs(grid,row+1,col)
+            dfs(grid,row,col+1)
+            dfs(grid,row-1,col)
+            dfs(grid,row,col-1)
             
-            grid[r][c] ='0'
-            dfs(r+1,c)
-            dfs(r-1,c)
-            dfs(r,c+1)
-            dfs(r,c-1)
-            return True
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == '1' and dfs(r,c):
+        count = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == '1':
                     count += 1
+                    dfs(grid,i,j)
         return count
 
+
+        
