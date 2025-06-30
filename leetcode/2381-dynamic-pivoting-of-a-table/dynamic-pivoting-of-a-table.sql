@@ -6,7 +6,7 @@ SET SESSION group_concat_max_len = 1000000;
 
 #Store case statement for dynamically generated columns in a variable ie case_stmt
 SET @case_stmt = NULL;
-SELECT GROUP_CONCAT(DISTINCT CONCAT('SUM(CASE WHEN store = "', store, '" THEN price END) AS ', store))
+SELECT GROUP_CONCAT(DISTINCT CONCAT('MAX(CASE WHEN store = "', store, '" THEN price END) AS ', store))
 INTO @case_stmt
 FROM products;
  
