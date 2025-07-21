@@ -20,4 +20,4 @@ class Solution(object):
                     del window[left_char]
             if window == freq1:
                 res.append(i-n+1)
-        return res
+        return res 
