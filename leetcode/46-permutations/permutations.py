@@ -7,7 +7,7 @@ class Solution(object):
         res = []
         def helper(curr):
             if len(curr) == len(nums):
-                res.append(copy.deepcopy(curr))
+                res.append(curr[:])
                 return
             
             for i in range(len(nums)):
