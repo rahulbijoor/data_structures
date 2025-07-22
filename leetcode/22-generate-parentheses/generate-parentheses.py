@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: List[str]
         """
         res = []
-        def helper(open_b,close,st,res):
+        def helper(open_b,close,st):
             if open_b == close == n:
                 res.append(st)
                 return
@@ -14,7 +14,7 @@ class Solution(object):
             if close > open_b:
                 return
             
-            helper(open_b+1,close,st+"(",res)
-            helper(open_b,close+1,st+")",res)
-        helper(0,0,"",res)
+            helper(open_b+1,close,st+"(")
+            helper(open_b,close+1,st+")")
+        helper(0,0,"")
         return res
