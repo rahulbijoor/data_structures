@@ -1,18 +1,11 @@
-class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        hm = {}
-        for i in nums:
-            if i in hm.keys():
-                hm[i] += 1
-            else:
-                hm[i] = 1
-        heap = []
-        heapq.heapify(heap)
-        for num in hm.keys():
-            heapq.heappush(heap,(hm[num],num))
-            if len(heap) > k:
-                heapq.heappop(heap)
-        res = []
-        for i in range(k):
-            res.append(heapq.heappop(heap)[1])
-        return res
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        fq = Counter(nums)
+        r = sorted(fq.items(),key=lambda x: x[1], reverse=True)
+        top_k = [item[0] for item in r[:k]]
+        return top_k
